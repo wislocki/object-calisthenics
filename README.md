@@ -275,7 +275,7 @@ Here are the interactions:
 * Recruiters should be able to see a listing of the jobs they have posted.
 * Jobseekers can save jobs onsite for later viewing.
 * Jobseekers can apply to jobs posted by recruiters.
- * There are 2 types of Jobs: JReq and ATS. 
+ * There are 2 different kinds of Jobs posted by recruiters: JReq and ATS. 
   * JReq jobs require a resume to apply to them.
   * ATS jobs do not.
  * Jobseekers can not apply to a job with someone else’s resume.
