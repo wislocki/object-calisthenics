@@ -289,7 +289,7 @@ Here are the interactions:
 * TheLadders should be able to see aggregate job application numbers by job and recruiter.
 * Jobseekers, when displayed, should be displayed by their name.
 * Recruiters, when displayed, should be displayed by their name.
-* Jobs, when displayed, should be displayed with a title.
+* Jobs, when displayed, should be displayed with a title and the name of the recruiter who posted it.
 * TheLadders wants the system to be able to handle more than one job with the same title.
 * TheLadders wants the system to be able to handle more than one jobseeker with the same name.
 * TheLadders wants the system to be able to handle more than one recruiter with the same name.
