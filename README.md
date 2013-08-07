@@ -285,15 +285,16 @@ Here are the interactions:
 * Recruiters should be able to see jobseekers who have applied to their jobs by both job and day. If possible, we would like to be able to combine the 2 and see jobseekers who have applied to a given job on a given day.
 * TheLadders should be able to get a report of what jobseekers have applied to jobs on any given day.
 * TheLadders should be able to get the job application report in either csv or html format.
-* TheLadders should be able to ascertain jobseeker, job, recruiter amd job application date from the job applicaiton report.
+* TheLadders should be able to ascertain jobseeker, job, recruiter amd job application date from the job application report.
 * TheLadders should be able to see aggregate job application numbers by job and recruiter.
+* TheLadders should be able to see how many job applications failed and how many succeeded aggregated by job and recruiter.
 * Jobseekers, when displayed, should be displayed by their name.
 * Recruiters, when displayed, should be displayed by their name.
 * Jobs, when displayed, should be displayed with a title and the name of the recruiter who posted it.
 * TheLadders wants the system to be able to handle more than one job with the same title.
 * TheLadders wants the system to be able to handle more than one jobseeker with the same name.
 * TheLadders wants the system to be able to handle more than one recruiter with the same name.
-
+* 
 Good luck! Remember, the most important part of being agile is early feedback, so be sure to consult with whoever is guiding you through this exercise often. There are no stupid questions if asking them leads to better results.
 
 ---
