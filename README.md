@@ -294,7 +294,7 @@ Here are the interactions:
 * TheLadders wants the system to be able to handle more than one job with the same title.
 * TheLadders wants the system to be able to handle more than one jobseeker with the same name.
 * TheLadders wants the system to be able to handle more than one employer with the same name.
-* 
+
 Good luck! Remember, the most important part of being agile is early feedback, so be sure to consult with whoever is guiding you through this exercise often. There are no stupid questions if asking them leads to better results.
 
 ---
