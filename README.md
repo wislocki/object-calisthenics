@@ -31,7 +31,7 @@ available to you.
 
 ## The Rules
 
-### Rule 1: On level of indentation per method
+### Rule 1: One level of indentation per method
 
 Ever stare at a big old method wondering where to start?  A giant method lacks cohesiveness.
 One guideline is to limit method length to 5 lines, but that kind of transition can be daunting if
