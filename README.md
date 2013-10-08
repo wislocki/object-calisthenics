@@ -77,7 +77,7 @@ class Board
 
   void collectRow(StringBuffer buf, int row) 
   {
-    for (int i = 0; i < 10; i++) Buf.append(data[row][i]);
+    for (int i = 0; i < 10; i++) buf.append(data[row][i]);
     buf.append("\n");
   }
 }
