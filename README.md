@@ -42,6 +42,8 @@ As you work with methods that do exactly one thing, expressed within classes doi
 Use the Extract Method feature of your IDE to pull out behaviors until your methods only have
 one level of indentation, like this:
 
+before:
+
 ```java
 class Board 
 {
@@ -58,7 +60,11 @@ class Board
     return buf.toString();
   }
 }
+```
 
+after:
+
+```java
 class Board 
 {
   ...
