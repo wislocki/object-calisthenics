@@ -54,7 +54,10 @@ class Board
     StringBuffer buf = new StringBuffer();
     for (int i = 0; i < 10; i++) 
     {
-      for (int j = 0; j < 10; j++) buf.append(data[i][j]);
+      for (int j = 0; j < 10; j++) 
+      {
+        buf.append(data[i][j]);
+      }
       buf.append("\n");
     } 
     return buf.toString();
@@ -78,12 +81,18 @@ class Board
 
   void collectRows(StringBuffer buf) 
   {
-    for (int i = 0; i < 10; i++) collectRow(buf, i);
+    for (int i = 0; i < 10; i++) 
+    {
+      collectRow(buf, i);
+    }
   }
 
   void collectRow(StringBuffer buf, int row) 
   {
-    for (int i = 0; i < 10; i++) buf.append(data[row][i]);
+    for (int i = 0; i < 10; i++) 
+    {
+      buf.append(data[row][i]);
+    }
     buf.append("\n");
   }
 }
