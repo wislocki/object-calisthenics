@@ -135,17 +135,28 @@ See also:
 
 ### Rule 4: First class collections
 
-If your language of choice doesn’t support higher order functions or blocks (e.g. Java) then application of this rule is simple: any class that contains a collection should contain no other
+If your language of choice doesn’t support higher order functions or blocks (e.g. Java) then application of this rule is difficult.
+Regardless of such support, this rule can be summed up thusly: any class that contains a collection should contain no other
 member variables.  Each collection gets wrapped in its own class, so now behaviors related to
 the collection have a home.  You may find that filters become a part of this new class.   Also,
 your new class can handle activities like joining two groups together or applying a rule to each
 element of the group.  
 
-If your language of choice supports higher order functions or blocks then the application of this rule is a little more complicated. The goal of this rule is to prevent the exposure of the implementation of a domain specific collection outside of that collection. So that, for example, we can switch internally from using a Dictionary to a List without changing our callers. If a language such as Ruby, you can comply with this rule by providing the standard enumerable methods that apply to your domain on your domain object itself. For example:
+If your language of choice supports higher order functions or blocks then the application of this quite a bit simpler. 
+The goal of this rule is to prevent the exposure of the implementation of a domain specific collection outside of that collection. 
+So that, for example, we can switch internally from using a Dictionary to a List without changing our callers. 
+In a language such as Ruby, you can comply with this rule by providing the standard enumerable methods that apply to your domain on 
+your domain object itself. For example:
 
 ```ruby
-def reportingTo(manager)
-  employees.select { | employee | employee.reportsTo(manager) }
+class Employees
+  ...
+  
+  def reportingTo(manager)
+    employees.select { | employee | employee.reportsTo(manager) }
+  end
+  
+  ...
 end
 ```
 
