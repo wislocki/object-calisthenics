@@ -189,8 +189,7 @@ dots indicate that you’re violating encapsulation.  Try asking that object to 
 rather than poking around its insides.  A major part of encapsulation is not reaching across class
 boundaries into types that you shouldn’t know about. 
 
-The Law of Demeter ("Only talk to your friends") is a good place to start, but think about it this
-way:  You can play with your friends, you can play with your privates, but you can’t play with your friends’ privates:
+The Law of Demeter ("Only talk to your friends") is a good place to start.
 
 ```java
 a.getFoo().getBar().getBaaz().doSomething(); // bad
