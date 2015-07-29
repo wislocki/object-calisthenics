@@ -1,4 +1,4 @@
-# The Ladders’ Object Calisthenics
+# TheLadders’ Object Calisthenics
 
 ## Overview
 
@@ -31,7 +31,7 @@ available to you.
 
 ## The Rules
 
-### Rule 1: On level of indentation per method
+### Rule 1: One level of indentation per method
 
 Ever stare at a big old method wondering where to start?  A giant method lacks cohesiveness.
 One guideline is to limit method length to 5 lines, but that kind of transition can be daunting if
@@ -41,6 +41,8 @@ As you work with methods that do exactly one thing, expressed within classes doi
 
 Use the Extract Method feature of your IDE to pull out behaviors until your methods only have
 one level of indentation, like this:
+
+before:
 
 ```java
 class Board 
@@ -52,13 +54,20 @@ class Board
     StringBuffer buf = new StringBuffer();
     for (int i = 0; i < 10; i++) 
     {
-      for (int j = 0; j < 10; j++) buf.append(data[i][j]);
+      for (int j = 0; j < 10; j++) 
+      {
+        buf.append(data[i][j]);
+      }
       buf.append("\n");
     } 
     return buf.toString();
   }
 }
+```
 
+after:
+
+```java
 class Board 
 {
   ...
@@ -72,12 +81,18 @@ class Board
 
   void collectRows(StringBuffer buf) 
   {
-    for (int i = 0; i < 10; i++) collectRow(buf, i);
+    for (int i = 0; i < 10; i++) 
+    {
+      collectRow(buf, i);
+    }
   }
 
   void collectRow(StringBuffer buf, int row) 
   {
-    for (int i = 0; i < 10; i++) Buf.append(data[row][i]);
+    for (int i = 0; i < 10; i++) 
+    {
+      buf.append(data[row][i]);
+    }
     buf.append("\n");
   }
 }
@@ -135,17 +150,28 @@ See also:
 
 ### Rule 4: First class collections
 
-If your language of choice doesn’t support higher order functions or blocks (e.g. Java) then application of this rule is simple: any class that contains a collection should contain no other
+If your language of choice doesn’t support higher order functions or blocks (e.g. Java) then application of this rule is difficult.
+Regardless of such support, this rule can be summed up thusly: any class that contains a collection should contain no other
 member variables.  Each collection gets wrapped in its own class, so now behaviors related to
 the collection have a home.  You may find that filters become a part of this new class.   Also,
 your new class can handle activities like joining two groups together or applying a rule to each
 element of the group.  
 
-If your language of choice supports higher order functions or blocks then the application of this rule is a little more complicated. The goal of this rule is to prevent the exposure of the implementation of a domain specific collection outside of that collection. So that, for example, we can switch internally from using a Dictionary to a List without changing our callers. If a language such as Ruby, you can comply with this rule by providing the standard enumerable methods that apply to your domain on your domain object itself. For example:
+If your language of choice supports higher order functions or blocks then the application of this quite a bit simpler. 
+The goal of this rule is to prevent the exposure of the implementation of a domain specific collection outside of that collection. 
+So that, for example, we can switch internally from using a Dictionary to a List without changing our callers. 
+In a language such as Ruby, you can comply with this rule by providing the standard enumerable methods that apply to your domain on 
+your domain object itself. For example:
 
 ```ruby
-def reportingTo(manager)
-  employees.select { | employee | employee.reportsTo(manager) }
+class Employees
+  ...
+  
+  def reportingTo(manager)
+    employees.select { | employee | employee.reportsTo(manager) }
+  end
+  
+  ...
 end
 ```
 
@@ -163,8 +189,7 @@ dots indicate that you’re violating encapsulation.  Try asking that object to 
 rather than poking around its insides.  A major part of encapsulation is not reaching across class
 boundaries into types that you shouldn’t know about. 
 
-The Law of Demeter ("Only talk to your friends") is a good place to start, but think about it this
-way:  You can play with your friends, you can play with your privates, but you can’t play with your friends’ privates:
+The Law of Demeter ("Only talk to your friends") is a good place to start.
 
 ```java
 a.getFoo().getBar().getBaaz().doSomething(); // bad
@@ -265,34 +290,35 @@ We have 5 main entities in this domain:
 
 * Jobs
 * Jobseekers
-* Recruiters
+* Employers
 * Resumes
 * Job Applications
 
 Here are the interactions:
 
-* Recruiters can post jobs.
-* Recruiters should be able to see a listing of the jobs they have posted.
+* Employers can post jobs.
+* Employers should be able to see a listing of the jobs they have posted.
 * Jobseekers can save jobs onsite for later viewing.
-* Jobseekers can apply to jobs posted by recruiters.
- * There are 2 different kinds of Jobs posted by recruiters: JReq and ATS. 
+* Jobseekers can apply to jobs posted by employers.
+ * There are 2 different kinds of Jobs posted by employers: JReq and ATS. 
   * JReq jobs require a resume to apply to them.
   * ATS jobs do not.
  * Jobseekers can not apply to a job with someone else’s resume.
  * Jobseekers should be able to apply to different jobs with different resumes.
 * Jobseekers should be able to see a listing of jobs they have saved for later viewing.
 * Jobseekers should be able to see a listing of the jobs for which they have applied.
-* Recruiters should be able to see jobseekers who have applied to their jobs by both job and day. If possible, we would like to be able to combine the 2 and see jobseekers who have applied to a given job on a given day.
-* TheLadders should be able to get a report of what jobseekers have applied to jobs on any given day.
+* Employers should be able to see jobseekers who have applied to their jobs by both job and day. If possible, we would like to be able to combine the 2 and see jobseekers who have applied to a given job on a given day.
+* TheLadders should be able to get a report of which jobseekers have applied to jobs on any given day.
 * TheLadders should be able to get the job application report in either csv or html format.
-* TheLadders should be able to ascertain jobseeker, job, recruiter amd job application date from the job applicaiton report.
-* TheLadders should be able to see aggregate job application numbers by job and recruiter.
+* TheLadders should be able to ascertain jobseeker, job, employer and job application date from the job application report.
+* TheLadders should be able to see aggregate job application numbers by job and employer.
+* TheLadders should be able to see how many job applications failed and how many succeeded aggregated by job and employer.
 * Jobseekers, when displayed, should be displayed by their name.
-* Recruiters, when displayed, should be displayed by their name.
-* Jobs, when displayed, should be displayed with a title and the name of the recruiter who posted it.
+* Employers, when displayed, should be displayed by their name.
+* Jobs, when displayed, should be displayed with a title and the name of the employer who posted it.
 * TheLadders wants the system to be able to handle more than one job with the same title.
 * TheLadders wants the system to be able to handle more than one jobseeker with the same name.
-* TheLadders wants the system to be able to handle more than one recruiter with the same name.
+* TheLadders wants the system to be able to handle more than one employer with the same name.
 
 Good luck! Remember, the most important part of being agile is early feedback, so be sure to consult with whoever is guiding you through this exercise often. There are no stupid questions if asking them leads to better results.
 
